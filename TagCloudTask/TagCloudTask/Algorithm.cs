@@ -50,7 +50,7 @@ namespace TagCloudTask
             var position = GetWordPosition(ref currentX, ref currentY, wordWidth, wordHeight);
             if (position.Item1 == -1)
                 return;
-            var font = new Font(FontFamily.GenericMonospace, config.GetFontSize());
+            var font = new Font(FontFamily.GenericMonospace, config.GetFontSize() * (float)Math.Pow(rate, 0.07));
             var color = ControlPaint.Dark(Color.Aqua, (float)Math.Pow(rate, 0.2));
             var pen = new Pen(color);
             g.DrawString(word, font, pen.Brush, position.Item1, position.Item2);
@@ -62,7 +62,7 @@ namespace TagCloudTask
             
             if (currentX > config.GetBitmapWidth())
             {
-                currentX = wordWidth;
+                currentX = wordWidth + new Random(currentY).Next(wordWidth);
                 currentY += wordHeight;
             }
             

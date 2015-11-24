@@ -1,32 +1,21 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
 
 namespace TagCloudTask
 {
     public class WordsReader : IWordsReader
     {
-        private readonly IWordsFileReader fileReader;
-        private readonly IWordNormalizer normalizer;
-        private readonly IWordFilter filter;
+        private readonly string path;
 
-        public WordsReader(IWordsFileReader fileReader, IWordNormalizer normalizer, IWordFilter filter)
+        public WordsReader(string path)
         {
-            this.fileReader = fileReader;
-            this.normalizer = normalizer;
-            this.filter = filter;
+            this.path = path;
         }
 
-        // можно вернуть IEnumerable
         public string[] ReadWords()
         {
-            // давай WordsReader будет только читать, а логику по фильтрации и нормализации вынесем в TagCloudBuilder (см Program.cs)
-            
-            // мне кажется интерфейса IWordsFileReader быть не должно, вполне достаточно, если логику чтения скрыть за WordsReader
-            // потому что вдруг мы из сети захотим читать, или из памяти (то есть не из файла) 
-            return fileReader
-                .ReadWordsFromFile()
-                .Select(normalizer.NormalizeWord)
-                .Where(filter.IsInterestingWord)
-                .ToArray();
+            return File.ReadAllText(path)
+                .Split(new[] { ' ', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }
