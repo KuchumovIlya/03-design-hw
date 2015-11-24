@@ -15,8 +15,13 @@ namespace TagCloudTask
             this.filter = filter;
         }
 
+        // можно вернуть IEnumerable
         public string[] ReadWords()
         {
+            // давай WordsReader будет только читать, а логику по фильтрации и нормализации вынесем в TagCloudBuilder (см Program.cs)
+            
+            // мне кажется интерфейса IWordsFileReader быть не должно, вполне достаточно, если логику чтения скрыть за WordsReader
+            // потому что вдруг мы из сети захотим читать, или из памяти (то есть не из файла) 
             return fileReader
                 .ReadWordsFromFile()
                 .Select(normalizer.NormalizeWord)

@@ -31,10 +31,21 @@ namespace TagCloudTask
                 {".bmp", ImageFormat.Bmp}
             };
 
+            // этот способ сборки все равно кажется сложным
             var algorithm = kernel.Get<IAlgorithm>();
             var words = kernel.Get<WordsReader>().ReadWords();
             var bitmap = algorithm.BuildTagCloudBitmap(words);
             bitmap.Save(options.OutputFile + options.OutputFormat, dict[options.OutputFormat]);
+
+            // мне кажется должно выглядеть как то так
+            // ITagCloudBuilder tagCloudBuilder =  kernel.Get<ITagCloudBuilder>();
+            // var bitmap = tagCloudBuilder.Build();
+            // тогда всю цепочку преобразований можно вынести в TagCloudBuilder
+
+            // строчку bitmap.Save(options.OutputFile + options.OutputFormat, dict[options.OutputFormat]);
+            // я бы вынес в PictureBuilder с интерфейсом IOutputBuilder
+            // а то вдргуг захотим в pdf выводить
+            // то есть штука преобразующая bitmap в файл должна быть за интерфейсом 
         }
     }
 }
