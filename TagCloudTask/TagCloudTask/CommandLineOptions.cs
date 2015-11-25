@@ -3,7 +3,7 @@ using CommandLine.Text;
 
 namespace TagCloudTask
 {
-    public class CommandLineOptions : IAlgorithmConfig
+    public class CommandLineOptions : ICommandLineOptions
     {
         [Option('i', "input", Required = true, HelpText = "Input file to read.")]
         public string InputFile { get; set; }
@@ -20,13 +20,28 @@ namespace TagCloudTask
         [Option('h', "height", DefaultValue = 500, HelpText = "Height of picture.")]
         public int Height { get; set; }
 
-        [Option('f', "font_size", DefaultValue = 20, HelpText = "Font size of words in could")]
+        [Option('f', "font_size", DefaultValue = 30, HelpText = "Font size of words in could")]
         public int FontSize { get; set; }
 
         [HelpOption]
         public string GetUsage()
         {
-            return HelpText.AutoBuild(this).ToString();
+            return HelpText.AutoBuild(this) + "Use utf-8 encoding.\n";
+        }
+
+        public string GetInputFile()
+        {
+            return InputFile;
+        }
+
+        public string GetOutputFile()
+        {
+            return OutputFile;
+        }
+
+        public string GetOutputFormat()
+        {
+            return OutputFormat;
         }
 
         public int GetBitmapWidth()

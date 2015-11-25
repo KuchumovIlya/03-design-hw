@@ -8,9 +8,9 @@ namespace TagCloudTask
 {
     public class Algorithm : IAlgorithm
     {
-        private readonly IAlgorithmConfig config;
+        private readonly ICommandLineOptions config;
 
-        public Algorithm (IAlgorithmConfig config)
+        public Algorithm (ICommandLineOptions config)
         {
             this.config = config;
         }
