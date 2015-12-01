@@ -16,7 +16,7 @@ namespace TagCloudTask
         public string[] ReadWords()
         {
             var text = File.ReadAllText(path).ToLower();
-            var regExp = new Regex(@"[^\w\d]");
+            var regExp = new Regex(@"\W|\d");
             return regExp.Split(text).Where(s => s != "").ToArray();
         }
     }

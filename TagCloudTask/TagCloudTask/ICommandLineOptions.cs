@@ -8,5 +8,6 @@
         int GetBitmapWidth();
         int GetBitmapHeight();
         int GetFontSize();
+        string GetMorphologicalApplicationPath();
     }
 }

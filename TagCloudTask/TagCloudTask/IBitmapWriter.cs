@@ -2,7 +2,7 @@
 
 namespace TagCloudTask
 {
-    interface IBitmapWriter
+    public interface IBitmapWriter
     {
         void WriteBitmap(Bitmap bitmap);
     }

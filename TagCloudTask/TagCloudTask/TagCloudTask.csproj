@@ -36,6 +36,10 @@
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -54,14 +58,20 @@
     <Compile Include="Algorithm.cs" />
     <Compile Include="CollectionsUtils.cs" />
     <Compile Include="CommandLineOptions.cs" />
+    <Compile Include="ConsoleClient.cs" />
     <Compile Include="IAlgorithm.cs" />
+    <Compile Include="IClient.cs" />
     <Compile Include="ICommandLineOptions.cs" />
     <Compile Include="IBitmapWriter.cs" />
     <Compile Include="ImageBitmapWriter.cs" />
+    <Compile Include="IMorphologicalParser.cs" />
     <Compile Include="ITagCloudBuilder.cs" />
     <Compile Include="IWordFilter.cs" />
     <Compile Include="IWordNormalizer.cs" />
     <Compile Include="IWordsReader.cs" />
+    <Compile Include="MorphologicalWordFilter.cs" />
+    <Compile Include="MorphologicalWordNormalizer.cs" />
+    <Compile Include="MystemToJsonParser.cs" />
     <Compile Include="NullWordNormalizer.cs" />
     <Compile Include="NullWordFilter.cs" />
     <Compile Include="Program.cs" />

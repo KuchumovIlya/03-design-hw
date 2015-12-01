@@ -2,7 +2,7 @@
 
 namespace TagCloudTask
 {
-    interface ITagCloudBuilder
+    public interface ITagCloudBuilder
     {
         Bitmap Build();
     }
